@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Clean, fast, single‑file personal website template you can host for free." />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Clean, fast, single‑file personal website template you can host for free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain.example" />
+  <meta property="og:image" content="https://your-domain.example/og-image.jpg" />
+
+  <!-- Optional font: uncomment if you like; otherwise system fonts keep things fast -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"> -->
+
+  <style>
+    :root{
+      --bg: #0b1020;           /* page background */
+      --panel: #0f172a;        /* card background */
+      --text: #e5e7eb;         /* primary text */
+      --muted: #94a3b8;        /* secondary text */
+      --brand: #0ea5e9;        /* accent */
+      --brand-2:#22d3ee;       /* accent gradient end */
+      --ring: rgba(14,165,233,.4);
+      --radius: 22px;
+      --shadow: 0 10px 30px rgba(2, 6, 23, .6);
+    }
+    @media (prefers-color-scheme: light) {
+      :root{ --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569; --ring:rgba(14,165,233,.25); box-shadow:0 10px 30px rgba(2,6,23,.08) }
+      .hero::before{ opacity:.08 }
+    }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(34,211,238,.12), transparent 60%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(14,165,233,.14), transparent 60%), var(--bg);
+      color:var(--text); line-height:1.6;
+    }
+
+    .container{ max-width:1100px; margin-inline:auto; padding:24px; }
+    a{ color:inherit; text-decoration:none }
+    img{ max-width:100%; display:block }
+    .btn{ display:inline-flex; align-items:center; gap:.6rem; padding:.8rem 1.1rem; border-radius:999px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; font-weight:600; box-shadow: var(--shadow); border:0; cursor:pointer }
+    .btn.ghost{ background:transparent; outline:1px solid rgba(148,163,184,.35); color:var(--text) }
+    .btn:focus-visible{ outline: 3px solid var(--ring); outline-offset:2px }
+
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip:focus{ left:24px; top:24px; width:auto; height:auto; background:var(--panel); padding:.7rem 1rem; border-radius:10px; outline:3px solid var(--ring) }
+
+    header{ position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in oklab, var(--bg), transparent 70%); border-bottom:1px solid rgba(148,163,184,.15) }
+    nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem }
+    .logo{ font-weight:800; letter-spacing:.4px }
+    .nav-links{ display:flex; gap:.8rem; flex-wrap:wrap }
+
+    .hero{ position:relative; border-radius:var(--radius); background:linear-gradient(180deg, rgba(148,163,184,.08), transparent 35%), var(--panel); padding:56px; box-shadow: var(--shadow); overflow:hidden }
+    .hero::before{ content:""; position:absolute; inset:-20%; background: radial-gradient(500px 180px at 10% 20%, rgba(34,211,238,.25), transparent 60%), radial-gradient(600px 220px at 90% 20%, rgba(14,165,233,.25), transparent 60%); pointer-events:none }
+    .hero h1{ font-size: clamp(2rem, 2.8vw + 1rem, 3.5rem); line-height:1.1; margin:0 0 .8rem 0 }
+    .hero p{ font-size: clamp(1rem, .5vw + .9rem, 1.2rem); color:var(--muted); max-width:62ch }
+    .hero .cta{ display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.2rem }
+
+    section{ margin-top:48px }
+    h2{ font-size:1.6rem; margin:0 0 12px 0 }
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:16px }
+    .card{ grid-column: span 12; background:var(--panel); border-radius:var(--radius); padding:24px; box-shadow: var(--shadow); border:1px solid rgba(148,163,184,.12) }
+    .card h3{ margin:.2rem 0 .4rem 0 }
+    .meta{ color:var(--muted); font-size:.95rem }
+
+    @media (min-width: 780px){
+      .card.span-4{ grid-column: span 4 }
+      .card.span-6{ grid-column: span 6 }
+    }
+
+    footer{ margin: 64px 0 24px; color:var(--muted); text-align:center; font-size:.95rem }
+    .social{ display:flex; gap:.8rem; justify-content:center; margin-top:.8rem }
+
+    /* Tiny mobile menu */
+    .menu-btn{ display:none }
+    @media (max-width: 640px){
+      .nav-links{ display:none }
+      .menu-btn{ display:inline-flex }
+      .menu{ position:absolute; right:24px; top:64px; background:var(--panel); border:1px solid rgba(148,163,184,.18); border-radius:14px; padding:.4rem; box-shadow: var(--shadow); display:none }
+      .menu a{ display:block; padding:.6rem .8rem; border-radius:10px }
+      .menu a:hover{ background:rgba(148,163,184,.12) }
+      .menu.open{ display:block }
+    }
+
+    /* Utilities */
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+    .pill{ display:inline-block; padding:.25rem .55rem; border-radius:999px; font-size:.8rem; background:rgba(14,165,233,.18); color:#7dd3fc }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Primary">
+        <div class="logo" aria-label="Home">Your<span style="color:var(--brand)">Name</span></div>
+        <div class="nav-links" role="menubar">
+          <a role="menuitem" href="#about">About</a>
+          <a role="menuitem" href="#projects">Projects</a>
+          <a role="menuitem" href="#contact">Contact</a>
+        </div>
+        <button class="btn ghost menu-btn" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu(this)">Menu</button>
+      </nav>
+      <div id="mobile-menu" class="menu" role="menu" aria-label="Mobile">
+        <a href="#about" role="menuitem" onclick="toggleMenu()">About</a>
+        <a href="#projects" role="menuitem" onclick="toggleMenu()">Projects</a>
+        <a href="#contact" role="menuitem" onclick="toggleMenu()">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="intro-title">
+      <span class="pill">Open‑source template</span>
+      <h1 id="intro-title">Hi, I'm <span style="color:var(--brand)">Your Name</span>. I build clean, fast web experiences.</h1>
+      <p>Use this single‑file template to launch a personal site, portfolio, or landing page. It's lightweight, accessible, and free to host. Replace the placeholder text and you're live.</p>
+      <div class="cta">
+        <a class="btn" href="#projects">See Projects</a>
+        <a class="btn ghost" href="#contact">Contact Me</a>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="grid">
+        <article class="card span-6">
+          <h3>Who I am</h3>
+          <p>I'm a <strong>your role</strong> based in <strong>your city</strong>, focused on crafting delightful, performant products. I like clean code, crisp UI, and solving real problems.</p>
+          <p class="meta">Available for freelance & collaborations</p>
+        </article>
+        <article class="card span-6">
+          <h3>What I do</h3>
+          <ul>
+            <li>Design & build responsive websites</li>
+            <li>Turn ideas into MVPs</li>
+            <li>Optimize performance & accessibility</li>
+          </ul>
+          <p class="meta">Tools: HTML, CSS, JS, React, Node, Figma</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="grid">
+        <article class="card span-4">
+          <h3>Project One</h3>
+          <p>Describe what it is, who it's for, and the outcome. Link to a live demo or repo.</p>
+          <p class="meta"><a href="#">Live demo</a> · <a href="#">Source</a></p>
+        </article>
+        <article class="card span-4">
+          <h3>Project Two</h3>
+          <p>A short, benefit‑focused summary. What makes it useful or unique?</p>
+          <p class="meta"><a href="#">Live demo</a> · <a href="#">Source</a></p>
+        </article>
+        <article class="card span-4">
+          <h3>Project Three</h3>
+          <p>Another project. Keep descriptions concise. Add results if you have them.</p>
+          <p class="meta"><a href="#">Live demo</a> · <a href="#">Source</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="grid">
+        <article class="card span-6">
+          <h3>Say hello</h3>
+          <p>Prefer email? Click below — it opens your mail app with a subject line.</p>
+          <p><a class="btn" href="mailto:you@example.com?subject=Hello%20from%20your%20website">Email me</a></p>
+          <p class="meta">Or replace this with a form service (e.g., Formspree) if you want on‑page submissions.</p>
+        </article>
+        <article class="card span-6">
+          <h3>Elsewhere</h3>
+          <div class="social" aria-label="Social links">
+            <a href="https://github.com/youruser" aria-label="GitHub">GitHub</a>
+            <a href="https://linkedin.com/in/youruser" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://twitter.com/youruser" aria-label="Twitter / X">Twitter</a>
+            <a href="https://your-blog.example" aria-label="Blog">Blog</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Your Name. All rights reserved.</div>
+      <div class="meta">Built with a single HTML file. Fast. Accessible. Free to host.</div>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Tiny mobile menu toggle
+    function toggleMenu(btn){
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+      if(btn){ btn.setAttribute('aria-expanded', menu.classList.contains('open')); }
+    }
+  </script>
+
+  <!--
+  HOW TO DEPLOY FOR FREE
+  1) GitHub Pages (recommended)
+     • Create a new repo named <yourusername>.github.io
+     • Add this file as index.html and push
+     • Visit https://<yourusername>.github.io
+
+  2) Netlify Drop
+     • Go to https://app.netlify.com/drop and drag‑and‑drop this file
+
+  3) Cloudflare Pages
+     • Create a project and upload this file as a static site
+
+  QUICK CUSTOMIZATION
+  • Replace "Your Name" and links above
+  • Set og:url and og:image for better social sharing
+  • Add a real favicon (e.g., /favicon.ico) if you like
+  • Duplicate a .card in Projects to add more work
+
+  ACCESSIBILITY NOTES
+  • Skip link, landmarks, and focus outlines are included
+  • Sufficient color contrast in both dark and light modes
+
+  LICENSE
+  • Do anything you want with it. No attribution required.
+  -->
+</body>
+</html>
