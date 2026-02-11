@@ -1,237 +1,233 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Clean, fast, single‑file personal website template you can host for free." />
-  <meta name="theme-color" content="#0ea5e9" />
-
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Your Name — Portfolio" />
-  <meta property="og:description" content="Clean, fast, single‑file personal website template you can host for free." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-domain.example" />
-  <meta property="og:image" content="https://your-domain.example/og-image.jpg" />
-
-  <!-- Optional font: uncomment if you like; otherwise system fonts keep things fast -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"> -->
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Chinedu O. | Growth & Communications Specialist | Web3 Community Builder</title>
+  <meta name="description" content="Growth & Communications Specialist in Web3. Community building, content strategy, on-chain analytics, digital campaigns. Abuja, Nigeria.">
+  
+  <!-- Google Fonts (Inter is clean and modern - matches reference vibe) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Link to template CSS (rename if needed, e.g., css/style.css) -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Add custom overrides if needed -->
   <style>
-    :root{
-      --bg: #0b1020;           /* page background */
-      --panel: #0f172a;        /* card background */
-      --text: #e5e7eb;         /* primary text */
-      --muted: #94a3b8;        /* secondary text */
-      --brand: #0ea5e9;        /* accent */
-      --brand-2:#22d3ee;       /* accent gradient end */
-      --ring: rgba(14,165,233,.4);
-      --radius: 22px;
-      --shadow: 0 10px 30px rgba(2, 6, 23, .6);
+    :root {
+      --primary: #10b981; /* Growth green accent */
+      --dark: #111111;
+      --light: #f9fafb;
     }
-    @media (prefers-color-scheme: light) {
-      :root{ --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569; --ring:rgba(14,165,233,.25); box-shadow:0 10px 30px rgba(2,6,23,.08) }
-      .hero::before{ opacity:.08 }
-    }
-
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(34,211,238,.12), transparent 60%),
-                  radial-gradient(900px 600px at 90% 10%, rgba(14,165,233,.14), transparent 60%), var(--bg);
-      color:var(--text); line-height:1.6;
-    }
-
-    .container{ max-width:1100px; margin-inline:auto; padding:24px; }
-    a{ color:inherit; text-decoration:none }
-    img{ max-width:100%; display:block }
-    .btn{ display:inline-flex; align-items:center; gap:.6rem; padding:.8rem 1.1rem; border-radius:999px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; font-weight:600; box-shadow: var(--shadow); border:0; cursor:pointer }
-    .btn.ghost{ background:transparent; outline:1px solid rgba(148,163,184,.35); color:var(--text) }
-    .btn:focus-visible{ outline: 3px solid var(--ring); outline-offset:2px }
-
-    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
-    .skip:focus{ left:24px; top:24px; width:auto; height:auto; background:var(--panel); padding:.7rem 1rem; border-radius:10px; outline:3px solid var(--ring) }
-
-    header{ position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in oklab, var(--bg), transparent 70%); border-bottom:1px solid rgba(148,163,184,.15) }
-    nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem }
-    .logo{ font-weight:800; letter-spacing:.4px }
-    .nav-links{ display:flex; gap:.8rem; flex-wrap:wrap }
-
-    .hero{ position:relative; border-radius:var(--radius); background:linear-gradient(180deg, rgba(148,163,184,.08), transparent 35%), var(--panel); padding:56px; box-shadow: var(--shadow); overflow:hidden }
-    .hero::before{ content:""; position:absolute; inset:-20%; background: radial-gradient(500px 180px at 10% 20%, rgba(34,211,238,.25), transparent 60%), radial-gradient(600px 220px at 90% 20%, rgba(14,165,233,.25), transparent 60%); pointer-events:none }
-    .hero h1{ font-size: clamp(2rem, 2.8vw + 1rem, 3.5rem); line-height:1.1; margin:0 0 .8rem 0 }
-    .hero p{ font-size: clamp(1rem, .5vw + .9rem, 1.2rem); color:var(--muted); max-width:62ch }
-    .hero .cta{ display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.2rem }
-
-    section{ margin-top:48px }
-    h2{ font-size:1.6rem; margin:0 0 12px 0 }
-    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:16px }
-    .card{ grid-column: span 12; background:var(--panel); border-radius:var(--radius); padding:24px; box-shadow: var(--shadow); border:1px solid rgba(148,163,184,.12) }
-    .card h3{ margin:.2rem 0 .4rem 0 }
-    .meta{ color:var(--muted); font-size:.95rem }
-
-    @media (min-width: 780px){
-      .card.span-4{ grid-column: span 4 }
-      .card.span-6{ grid-column: span 6 }
-    }
-
-    footer{ margin: 64px 0 24px; color:var(--muted); text-align:center; font-size:.95rem }
-    .social{ display:flex; gap:.8rem; justify-content:center; margin-top:.8rem }
-
-    /* Tiny mobile menu */
-    .menu-btn{ display:none }
-    @media (max-width: 640px){
-      .nav-links{ display:none }
-      .menu-btn{ display:inline-flex }
-      .menu{ position:absolute; right:24px; top:64px; background:var(--panel); border:1px solid rgba(148,163,184,.18); border-radius:14px; padding:.4rem; box-shadow: var(--shadow); display:none }
-      .menu a{ display:block; padding:.6rem .8rem; border-radius:10px }
-      .menu a:hover{ background:rgba(148,163,184,.12) }
-      .menu.open{ display:block }
-    }
-
-    /* Utilities */
-    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
-    .pill{ display:inline-block; padding:.25rem .55rem; border-radius:999px; font-size:.8rem; background:rgba(14,165,233,.18); color:#7dd3fc }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e5e7eb; }
+    h1, h2, h3 { color: white; }
+    a { color: var(--primary); }
+    .btn { background: var(--primary); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+    .btn:hover { opacity: 0.9; }
+    .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
 
-  <header>
+  <!-- Hero / Header -->
+  <header class="hero section">
     <div class="container">
-      <nav aria-label="Primary">
-        <div class="logo" aria-label="Home">Your<span style="color:var(--brand)">Name</span></div>
-        <div class="nav-links" role="menubar">
-          <a role="menuitem" href="#about">About</a>
-          <a role="menuitem" href="#projects">Projects</a>
-          <a role="menuitem" href="#contact">Contact</a>
-        </div>
-        <button class="btn ghost menu-btn" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu(this)">Menu</button>
-      </nav>
-      <div id="mobile-menu" class="menu" role="menu" aria-label="Mobile">
-        <a href="#about" role="menuitem" onclick="toggleMenu()">About</a>
-        <a href="#projects" role="menuitem" onclick="toggleMenu()">Projects</a>
-        <a href="#contact" role="menuitem" onclick="toggleMenu()">Contact</a>
+      <h1>Daniel Chinedu O.</h1>
+      <h2>Growth & Communications Specialist | Web3 Community Builder & Content Strategist</h2>
+      <p>Driving sustainable growth, crafting compelling narratives, and amplifying decentralized communities through strategy, content, and on-chain insights.</p>
+      
+      <div class="contact-info">
+        <p>📍 Abuja, Nigeria (Remote-ready)</p>
+        <p>📧 <a href="mailto:danielokafor0015@gmail.com">danielokafor0015@gmail.com</a></p>
+        <p>📞 +234-913-685-2520</p>
+        <p>🔗 <a href="https://www.linkedin.com/in/danny0015" target="_blank">LinkedIn</a> | <a href="https://x.com/DatChilledGuyy" target="_blank">X @DatChilledGuyy</a></p>
+      </div>
+      
+      <div class="hero-cta">
+        <a href="mailto:danielokafor0015@gmail.com" class="btn">Get in Touch</a>
+        <a href="https://www.linkedin.com/in/danny0015" target="_blank" class="btn outline">View LinkedIn</a>
       </div>
     </div>
   </header>
 
-  <main id="main" class="container">
-    <section class="hero" aria-labelledby="intro-title">
-      <span class="pill">Open‑source template</span>
-      <h1 id="intro-title">Hi, I'm <span style="color:var(--brand)">Your Name</span>. I build clean, fast web experiences.</h1>
-      <p>Use this single‑file template to launch a personal site, portfolio, or landing page. It's lightweight, accessible, and free to host. Replace the placeholder text and you're live.</p>
-      <div class="cta">
-        <a class="btn" href="#projects">See Projects</a>
-        <a class="btn ghost" href="#contact">Contact Me</a>
-      </div>
-    </section>
+  <!-- About / Profile -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>Results-driven Communications and Growth Specialist with over 2 years of experience in strategic communications, content development, digital marketing, campaign management, and online audience engagement. Demonstrated expertise in writing, editing, and storytelling, with a strong focus on maintaining a consistent tone and a high level of attention to detail.</p>
+      <p>Experienced in planning, scheduling, and publishing content across multiple digital channels; executing end-to-end digital campaigns; supporting and scaling community engagement initiatives; monitoring performance metrics; and synthesizing communications data for reporting and impact measurement.</p>
+      <p>Possesses in-depth knowledge of decentralized technologies, Web3 ecosystems, on-chain analytics, protocol analysis, and Bitcoin open-source development. Highly motivated to contribute to decentralizing Bitcoin software development and nurturing talent across the Global South through high-quality content, strategic communications, and community amplification.</p>
+      <p>Fully remote-ready and currently based in Abuja, Nigeria.</p>
+    </div>
+  </section>
 
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">About</h2>
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2>Skills</h2>
       <div class="grid">
-        <article class="card span-6">
-          <h3>Who I am</h3>
-          <p>I'm a <strong>your role</strong> based in <strong>your city</strong>, focused on crafting delightful, performant products. I like clean code, crisp UI, and solving real problems.</p>
-          <p class="meta">Available for freelance & collaborations</p>
-        </article>
-        <article class="card span-6">
-          <h3>What I do</h3>
+        <div class="card">
+          <h3>Digital & Campaign Management</h3>
+          <p>Digital Campaigns & Announcements | Social Media Management | Cross-Channel Strategies | Campaign Execution & Coordination</p>
+        </div>
+        <div class="card">
+          <h3>Communications & Content</h3>
+          <p>Content Planning & Scheduling | Content Publishing & Distribution | Writing, Editing & Storytelling | Attention to Tone & Detail | Brand Messaging & Voice Alignment</p>
+        </div>
+        <div class="card">
+          <h3>Analytics & Reporting</h3>
+          <p>Performance Metrics Monitoring | Analytics & Data Compilation | Reporting & Impact Measurement | ROI & Engagement Analysis</p>
+        </div>
+        <div class="card">
+          <h3>Web3 & On-Chain Analytics</h3>
+          <p>On-Chain Analytics with Dune Analytics (custom queries & dashboards) | Nansen for wallet labeling & smart money tracking | Interpreting wallet activity and transaction trends | Token holder distribution & retention analysis | Protocol metrics review (TVL, volume, user growth) | Basic tokenomics evaluation for growth insights</p>
+        </div>
+        <div class="card">
+          <h3>Tools & Platforms</h3>
+          <p>Notion | HubSpot | Google Analytics | Mailchimp | Buffer | Google Sheets | Airtable</p>
+        </div>
+        <div class="card">
+          <h3>Community & Engagement</h3>
+          <p>Online Audience Engagement | Community Engagement & Insights | Stakeholder Collaboration | Remote Collaboration & Independent Organization</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise / Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2>What I Do</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Content Strategy & Storytelling</h3>
+          <p>Creating high-impact threads, articles, and narratives that educate Web3 audiences and highlight protocol milestones.</p>
+        </div>
+        <div class="card">
+          <h3>Digital Campaign Execution</h3>
+          <p>End-to-end multi-channel campaigns for audience growth, engagement, and measurable ROI in decentralized ecosystems.</p>
+        </div>
+        <div class="card">
+          <h3>Web3 Community Growth & Insights</h3>
+          <p>Building and amplifying communities using on-chain data, engagement strategies, and sustainable adoption frameworks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects / Portfolio -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Web3 Growth & DeFi Threads</h3>
+          <p>Ongoing (2024–Present) on X (@DatChilledGuyy): In-depth threads on sustainable Web3 growth, DeFi trends, tokenomics breakdowns, on-chain insights, protocol analysis (Solana ecosystem, privacy solutions like Lumenless, real-world payments with GotSOLpay), and ecosystem adoption strategies. Daily engagement and community discussions.</p>
+          <a href="https://x.com/DatChilledGuyy" target="_blank" class="btn">View Threads on X</a>
+        </div>
+        <div class="card">
+          <h3>Solana Ecosystem Contributions via Superteam</h3>
+          <p>2025: Participated in Superteam initiatives and bounties (e.g., content bounties like Lume product launch threads; active discussions on Superteam NG contributions). Created and shared insights to support community goals and value creation in decentralized environments.</p>
+        </div>
+        <div class="card">
+          <h3>Privacy & Real-World Crypto Articles</h3>
+          <p>2025: Wrote explanatory threads on Solana privacy challenges/solutions (e.g., Lumenless integration) and practical applications like merchant stablecoin payments to educate and amplify decentralized tech use cases.</p>
+        </div>
+        <div class="card">
+          <h3>Avantisfi & Broader Web3 Content</h3>
+          <p>2024: Contributed as ecosystem advocate, producing DeFi protocol breakdowns, influencer tactics for blockchain projects, and growth frameworks. Focused on real on-chain trends and sustainable adoption to engage audiences and show thought leadership.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Experience -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+        <div class="job">
+          <h3>Campaign Manager</h3>
+          <p>TIMA: Influencer Marketing Agency • 01/2025 – 01/2026 • Remote</p>
           <ul>
-            <li>Design & build responsive websites</li>
-            <li>Turn ideas into MVPs</li>
-            <li>Optimize performance & accessibility</li>
+            <li>Supported content planning, scheduling, and publishing by developing campaign briefs, coordinating creator content calendars, and ensuring timely delivery of aligned written and visual assets across social media and digital channels.</li>
+            <li>Executed digital campaigns and announcements, tracking performance metrics including engagement, reach, and conversions to optimize messaging and improve online audience engagement.</li>
+            <li>Compiled and analyzed communications data to deliver detailed ROI reports and support impact measurement, while coordinating with stakeholders for authentic community engagement and long-term partnerships.</li>
           </ul>
-          <p class="meta">Tools: HTML, CSS, JS, React, Node, Figma</p>
-        </article>
+        </div>
+        <div class="job">
+          <h3>Growth Manager</h3>
+          <p>A Better Influence Agency • 05/2024 – 09/2025 • Hybrid</p>
+          <ul>
+            <li>Designed and executed multi-channel digital campaigns focused on audience acquisition, content distribution, engagement optimization, and measurable growth through data-informed strategies.</li>
+            <li>Monitored performance metrics and gathered insights to refine messaging, positioning, and content strategy.</li>
+            <li>Collaborated with teams and contributors to deliver high-impact content, announcements, and community-focused initiatives in a remote environment.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h3>Contributor & Ecosystem Advocate</h3>
+          <p>Superteam (Solana Ecosystem) & Avantisfi • 10/2024 – Present • Hybrid</p>
+          <ul>
+            <li>Created and published content and insights on Web3 growth, protocol trends, decentralized technologies, and community initiatives to spotlight participant achievements and support ecosystem goals.</li>
+            <li>Engaged in online audience engagement through decentralized collaboration, governance participation, and value-creation efforts.</li>
+            <li>Contributed to bounty-driven projects emphasizing sustainable adoption, impact narratives, and community-driven growth in open-source and decentralized environments.</li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Projects</h2>
-      <div class="grid">
-        <article class="card span-4">
-          <h3>Project One</h3>
-          <p>Describe what it is, who it's for, and the outcome. Link to a live demo or repo.</p>
-          <p class="meta"><a href="#">Live demo</a> · <a href="#">Source</a></p>
-        </article>
-        <article class="card span-4">
-          <h3>Project Two</h3>
-          <p>A short, benefit‑focused summary. What makes it useful or unique?</p>
-          <p class="meta"><a href="#">Live demo</a> · <a href="#">Source</a></p>
-        </article>
-        <article class="card span-4">
-          <h3>Project Three</h3>
-          <p>Another project. Keep descriptions concise. Add results if you have them.</p>
-          <p class="meta"><a href="#">Live demo</a> · <a href="#">Source</a></p>
-        </article>
-      </div>
-    </section>
+  <!-- Education & Interests -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2>Education & Certifications</h2>
+      <ul>
+        <li>Social Media Marketing – HubSpot Academy (2023)</li>
+        <li>Pharmacy – Nnamdi Azikiwe University</li>
+        <li>Blockchain & Web3 Fundamentals – Cyfrin Updraft (2025)</li>
+        <li>Digital Marketing Fundamentals – Google (2024)</li>
+        <li>Influencer Marketing – HubSpot Academy (2023)</li>
+        <li>Inbound Methodology – HubSpot Academy</li>
+      </ul>
+      
+      <h2>Interests</h2>
+      <ul class="interests">
+        <li>Community Building</li>
+        <li>Video editing</li>
+        <li>Podcasting</li>
+        <li>Gaming</li>
+        <li>DeFi</li>
+        <li>Creator Economies</li>
+      </ul>
+    </div>
+  </section>
 
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <div class="grid">
-        <article class="card span-6">
-          <h3>Say hello</h3>
-          <p>Prefer email? Click below — it opens your mail app with a subject line.</p>
-          <p><a class="btn" href="mailto:you@example.com?subject=Hello%20from%20your%20website">Email me</a></p>
-          <p class="meta">Or replace this with a form service (e.g., Formspree) if you want on‑page submissions.</p>
-        </article>
-        <article class="card span-6">
-          <h3>Elsewhere</h3>
-          <div class="social" aria-label="Social links">
-            <a href="https://github.com/youruser" aria-label="GitHub">GitHub</a>
-            <a href="https://linkedin.com/in/youruser" aria-label="LinkedIn">LinkedIn</a>
-            <a href="https://twitter.com/youruser" aria-label="Twitter / X">Twitter</a>
-            <a href="https://your-blog.example" aria-label="Blog">Blog</a>
-          </div>
-        </article>
-      </div>
-    </section>
+  <!-- Contact / CTA -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2>Let's Connect & Build Together</h2>
+      <p>Ready to discuss Web3 growth strategies, community initiatives, content campaigns, or on-chain insights? I'm fully remote-ready.</p>
+      <a href="mailto:danielokafor0015@gmail.com" class="btn">Email Me Now</a>
+      <p style="margin-top: 20px;">
+        <a href="https://www.linkedin.com/in/danny0015" target="_blank">LinkedIn</a> • 
+        <a href="https://x.com/DatChilledGuyy" target="_blank">X @DatChilledGuyy</a> • 
+        +234-913-685-2520
+      </p>
+    </div>
+  </section>
 
-    <footer>
-      <div>© <span id="year"></span> Your Name. All rights reserved.</div>
-      <div class="meta">Built with a single HTML file. Fast. Accessible. Free to host.</div>
-    </footer>
-  </main>
-
+  <!-- Optional: Simple smooth scroll JS -->
   <script>
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Tiny mobile menu toggle
-    function toggleMenu(btn){
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('open');
-      if(btn){ btn.setAttribute('aria-expanded', menu.classList.contains('open')); }
-    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
-
-  <!--
-  HOW TO DEPLOY FOR FREE
-  1) GitHub Pages (recommended)
-     • Create a new repo named <yourusername>.github.io
-     • Add this file as index.html and push
-     • Visit https://<yourusername>.github.io
-
-  2) Netlify Drop
-     • Go to https://app.netlify.com/drop and drag‑and‑drop this file
-
-  3) Cloudflare Pages
-     • Create a project and upload this file as a static site
-
-  QUICK CUSTOMIZATION
-  • Replace "Your Name" and links above
-  • Set og:url and og:image for better social sharing
-  • Add a real favicon (e.g., /favicon.ico) if you like
-  • Duplicate a .card in Projects to add more work
-
-  ACCESSIBILITY NOTES
-  • Skip link, landmarks, and focus outlines are included
-  • Sufficient color contrast in both dark and light modes
-
-  LICENSE
-  • Do anything you want with it. No attribution required.
-  -->
 </body>
 </html>
